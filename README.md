@@ -30,7 +30,9 @@ go get github.com/Ferluci/ip2loc
 Examples
 =======
 
-##InMemory
+InMemory
+------
+
 ```go
 package main
 
@@ -55,7 +57,8 @@ func main() {
 	ip2loc.PrintRecord(record)
 }
 ```
-##Disk
+Disk
+------
 ```go
 package main
 

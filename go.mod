@@ -1,3 +1,3 @@
-module github.com/Ferluci/ip2loc/v9
+module github.com/Ferluci/ip2loc/v10
 
 go 1.14
