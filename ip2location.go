@@ -1,7 +1,7 @@
 // This ip2l package provides a fast lookup of country, region, city, latitude, longitude, ZIP code, time zone,
 // ISP, domain name, connection type, IDD code, area code, weather station code, station name, MCC, MNC,
 // mobile brand, elevation, and usage type from IP address by using IP2Location database.
-package ip2l
+package ip2loc
 
 import (
 	"bytes"
