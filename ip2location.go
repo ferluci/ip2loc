@@ -65,9 +65,9 @@ type DB struct {
 	f    DBReader
 	meta ip2LocationMeta
 
-	countryPositionOffset              uint32
-	regionPositionOffset               uint32
-	cityPositionOffset                 uint32
+	countryPositionOffset            uint32
+	regionPositionOffset             uint32
+	cityPositionOffset               uint32
 	ispPositionOffset                uint32
 	domainPositionOffset             uint32
 	zipcodePositionOffset            uint32
@@ -85,9 +85,9 @@ type DB struct {
 	elevationPositionOffset          uint32
 	usageTypePositionOffset          uint32
 
-	countryEnabled             bool
-	regionEnabled              bool
-	cityEnabled                bool
+	countryEnabled            bool
+	regionEnabled             bool
+	cityEnabled               bool
 	ispEnabled                bool
 	domainEnabled             bool
 	zipcodeEnabled            bool
