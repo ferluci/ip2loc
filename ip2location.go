@@ -4,6 +4,7 @@
 package ip2loc
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/binary"
 	"fmt"
@@ -18,6 +19,14 @@ import (
 type DBReader interface {
 	io.ReadCloser
 	io.ReaderAt
+}
+
+type InMemoryDBReader struct {
+	*bytes.Reader
+}
+
+func (r *InMemoryDBReader) Close() error {
+	return nil
 }
 
 type ip2LocationMeta struct {
@@ -316,6 +325,32 @@ func (d *DB) readFloat(pos uint32) (float32, error) {
 func fatal(db *DB, err error) (*DB, error) {
 	_ = db.f.Close()
 	return nil, err
+}
+
+// OpenInMemoryDB takes the path to the IP2Location BIN database file. It will read all file data
+// and return the underlining DB object.
+func OpenInMemoryDB(dbpath string) (*DB, error) {
+	dbFile, err := os.Open(dbpath)
+	defer dbFile.Close()
+
+	if err != nil {
+		return nil, err
+	}
+
+	info, err := dbFile.Stat()
+	if err != nil {
+		return nil, err
+	}
+
+	// calculate the bytes size
+	var size = info.Size()
+	fileData := make([]byte, size)
+
+	// read into buffer
+	buffer := bufio.NewReader(dbFile)
+	_, err = buffer.Read(fileData)
+
+	return OpenDBWithReader(&InMemoryDBReader{bytes.NewReader(fileData)})
 }
 
 // Open takes the path to the IP2Location BIN database file. It will read all the metadata required to
