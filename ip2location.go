@@ -1,7 +1,7 @@
 // This ip2location package provides a fast lookup of country, region, city, latitude, longitude, ZIP code, time zone,
 // ISP, domain name, connection type, IDD code, area code, weather station code, station name, MCC, MNC,
 // mobile brand, elevation, and usage type from IP address by using IP2Location database.
-package ip2location
+package ip2l
 
 import (
 	"bytes"
@@ -485,26 +485,6 @@ func OpenDBWithReader(reader DBReader) (*DB, error) {
 	return db, nil
 }
 
-// Open takes the path to the IP2Location BIN database file. It will read all the metadata required to
-// be able to extract the embedded geolocation data.
-//
-// Deprecated: No longer being updated.
-func Open(dbpath string) {
-	db, err := OpenDB(dbpath)
-	if err != nil {
-		return
-	}
-
-	defaultDB = db
-}
-
-// Close will close the file handle to the BIN file.
-//
-// Deprecated: No longer being updated.
-func Close() {
-	defaultDB.Close()
-}
-
 // Api_version returns the version of the component.
 func Api_version() string {
 	return api_version
@@ -540,153 +520,6 @@ func handleError(rec IP2Locationrecord, err error) IP2Locationrecord {
 		fmt.Print(err)
 	}
 	return rec
-}
-
-// Get_all will return all geolocation fields based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_all(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, all))
-}
-
-// Get_country_short will return the ISO-3166 country code based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_country_short(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, countryshort))
-}
-
-// Get_country_long will return the country name based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_country_long(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, countrylong))
-}
-
-// Get_region will return the region name based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_region(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, region))
-}
-
-// Get_city will return the city name based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_city(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, city))
-}
-
-// Get_isp will return the Internet Service Provider name based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_isp(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, isp))
-}
-
-// Get_latitude will return the latitude based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_latitude(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, latitude))
-}
-
-// Get_longitude will return the longitude based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_longitude(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, longitude))
-}
-
-// Get_domain will return the domain name based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_domain(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, domain))
-}
-
-// Get_zipcode will return the postal code based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_zipcode(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, zipcode))
-}
-
-// Get_timezone will return the time zone based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_timezone(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, timezone))
-}
-
-// Get_netspeed will return the Internet connection speed based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_netspeed(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, netspeed))
-}
-
-// Get_iddcode will return the International Direct Dialing code based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_iddcode(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, iddcode))
-}
-
-// Get_areacode will return the area code based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_areacode(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, areacode))
-}
-
-// Get_weatherstationcode will return the weather station code based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_weatherstationcode(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, weatherstationcode))
-}
-
-// Get_weatherstationname will return the weather station name based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_weatherstationname(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, weatherstationname))
-}
-
-// Get_mcc will return the mobile country code based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_mcc(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, mcc))
-}
-
-// Get_mnc will return the mobile network code based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_mnc(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, mnc))
-}
-
-// Get_mobilebrand will return the mobile carrier brand based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_mobilebrand(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, mobilebrand))
-}
-
-// Get_elevation will return the elevation in meters based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_elevation(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, elevation))
-}
-
-// Get_usagetype will return the usage type based on the queried IP address.
-//
-// Deprecated: No longer being updated.
-func Get_usagetype(ipaddress string) IP2Locationrecord {
-	return handleError(defaultDB.query(ipaddress, usagetype))
 }
 
 // Get_all will return all geolocation fields based on the queried IP address.
