@@ -515,8 +515,8 @@ func ApiVersion() string {
 }
 
 // populate record with message
-func loadMessage(mesg string) *IP2LocationRecord {
-	x := &IP2LocationRecord{}
+func loadMessage(mesg string) IP2LocationRecord {
+	x := IP2LocationRecord{}
 
 	x.CountryShort = mesg
 	x.CountryLong = mesg
@@ -540,112 +540,112 @@ func loadMessage(mesg string) *IP2LocationRecord {
 }
 
 // GetAll will return all geolocation fields based on the queried IP address.
-func (d *DB) GetAll(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetAll(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, all)
 }
 
 // GetCountryShort will return the ISO-3166 country code based on the queried IP address.
-func (d *DB) GetCountryShort(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetCountryShort(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, countryShort)
 }
 
 // GetCountryLong will return the country name based on the queried IP address.
-func (d *DB) GetCountryLong(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetCountryLong(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, countryLong)
 }
 
 // GetRegion will return the region name based on the queried IP address.
-func (d *DB) GetRegion(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetRegion(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, region)
 }
 
 // GetCity will return the city name based on the queried IP address.
-func (d *DB) GetCity(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetCity(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, city)
 }
 
 // GetISP will return the Internet Service Provider name based on the queried IP address.
-func (d *DB) GetISP(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetISP(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, isp)
 }
 
 // GetLatitude will return the latitude based on the queried IP address.
-func (d *DB) GetLatitude(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetLatitude(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, latitude)
 }
 
 // GetLongitude will return the longitude based on the queried IP address.
-func (d *DB) GetLongitude(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetLongitude(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, longitude)
 }
 
 // GetDomain will return the domain name based on the queried IP address.
-func (d *DB) GetDomain(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetDomain(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, domain)
 }
 
 // GetZipCode will return the postal code based on the queried IP address.
-func (d *DB) GetZipCode(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetZipCode(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, zipCode)
 }
 
 // GetTimezone will return the time zone based on the queried IP address.
-func (d *DB) GetTimezone(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetTimezone(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, timezone)
 }
 
 // GetNetSpeed will return the Internet connection speed based on the queried IP address.
-func (d *DB) GetNetSpeed(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetNetSpeed(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, netSpeed)
 }
 
 // GetIDDCode will return the International Direct Dialing code based on the queried IP address.
-func (d *DB) GetIDDCode(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetIDDCode(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, iddCode)
 }
 
 // GetAreaCode will return the area code based on the queried IP address.
-func (d *DB) GetAreaCode(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetAreaCode(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, areaCode)
 }
 
 // GetWeatherStationCode will return the weather station code based on the queried IP address.
-func (d *DB) GetWeatherStationCode(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetWeatherStationCode(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, weatherStationCode)
 }
 
 // GetWeatherStationName will return the weather station name based on the queried IP address.
-func (d *DB) GetWeatherStationName(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetWeatherStationName(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, weatherStationName)
 }
 
 // GetMCC will return the mobile country code based on the queried IP address.
-func (d *DB) GetMCC(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetMCC(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, mcc)
 }
 
 // GetMNC will return the mobile network code based on the queried IP address.
-func (d *DB) GetMNC(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetMNC(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, mnc)
 }
 
 // GetMobileBrand will return the mobile carrier brand based on the queried IP address.
-func (d *DB) GetMobileBrand(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetMobileBrand(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, mobileBrand)
 }
 
 // GetElevation will return the elevation in meters based on the queried IP address.
-func (d *DB) GetElevation(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetElevation(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, elevation)
 }
 
 // GetUsageType will return the usage type based on the queried IP address.
-func (d *DB) GetUsageType(ip string) (*IP2LocationRecord, error) {
+func (d *DB) GetUsageType(ip string) (IP2LocationRecord, error) {
 	return d.query(ip, usageType)
 }
 
 // main query
-func (d *DB) query(ip string, mode uint32) (*IP2LocationRecord, error) {
+func (d *DB) query(ip string, mode uint32) (IP2LocationRecord, error) {
 	x := loadMessage(parameterIsNotSupported) // default message
 
 	// read metadata
@@ -881,7 +881,7 @@ func (d *DB) Close() {
 }
 
 // PrintRecord is used to output the geolocation data for debugging purposes.
-func PrintRecord(x *IP2LocationRecord) {
+func PrintRecord(x IP2LocationRecord) {
 	fmt.Printf("countryShort: %s\n", x.CountryShort)
 	fmt.Printf("countryLong: %s\n", x.CountryLong)
 	fmt.Printf("region: %s\n", x.Region)

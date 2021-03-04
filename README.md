@@ -11,15 +11,6 @@ There are two different approaches to work with DB:
 
 You can choose an approach that suits your needs c:
 
-Benchmarks
-=======
-```
-BenchmarkDBGetAllFromDisk
-BenchmarkDBGetAllFromDisk-8     	   56499	     20792 ns/op
-BenchmarkDBGetAllFromMemory
-BenchmarkDBGetAllFromMemory-8   	  282685	      3805 ns/op
-```
-
 Installation
 =======
 
