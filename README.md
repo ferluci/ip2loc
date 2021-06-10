@@ -15,7 +15,7 @@ Installation
 =======
 
 ```
-go get github.com/Ferluci/ip2loc
+go get github.com/Ferluci/ip2proxy
 ```
 
 Examples
