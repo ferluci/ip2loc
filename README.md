@@ -15,7 +15,7 @@ Installation
 =======
 
 ```
-go get github.com/Ferluci/ip2proxy
+go get github.com/ferluci/ip2proxy
 ```
 
 Examples
@@ -29,7 +29,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Ferluci/ip2loc"
+	"github.com/ferluci/ip2loc"
 )
 
 func main() {
@@ -55,7 +55,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Ferluci/ip2loc"
+	"github.com/ferluci/ip2loc"
 )
 
 func main() {
